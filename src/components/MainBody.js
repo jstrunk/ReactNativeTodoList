@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
 
-import AddItem from './AddItem';
+import AddItem from '../containers/AddItem';
 import List from './List';
 
 const styles = StyleSheet.create({
