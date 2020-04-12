@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {FlatList,Text,StyleSheet,TouchableOpacity} from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, CheckBox } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   list: {
   },
   item: {
-    padding: 15,
     textAlign: 'left',
     color: 'black',
   },
@@ -22,10 +21,11 @@ export default class List extends Component {
   renderItem = ({item, index}) => (
     <ListItem
       title={item.key}
+      titleStyle={styles.item}
       checkBox={{
         right: true,
         checked: this.props.items[index].done,
-        onPress: () => {
+        onIconPress: () => {
           let items = [...this.props.items];
           let item = {...items[index]};
           item.done = !item.done;

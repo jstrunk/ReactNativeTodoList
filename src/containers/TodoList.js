@@ -8,7 +8,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import FlashMessage, {showMessage, hideMessage} from 'react-native-flash-message';
 
 import Title from '../components/Title';

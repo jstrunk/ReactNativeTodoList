@@ -8,7 +8,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, View, AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import FlashMessage from 'react-native-flash-message';
 
 import TodoList from './src/containers/TodoList';
