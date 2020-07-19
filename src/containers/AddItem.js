@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {TextInput,Text,StyleSheet} from 'react-native';
+import { connect } from 'react-redux'
+import { addItem } from '../redux/actions'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class AddItem extends Component {
+class AddItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,12 +28,9 @@ export default class AddItem extends Component {
     this.setState({newItem: text});
   }
 
-  addItem = () => {
+  submitItem = () => {
     if (this.state.newItem == '') return;
-
-    let items = [...this.props.items];
-    items.push({key: this.state.newItem, done: false});
-    this.props.onUpdate(items);
+    this.props.addItem(this.state.newItem);
     this.setState({newItem: ''});
     this.addItemInput.setNativeProps({text: ''});
   }
@@ -40,12 +39,21 @@ export default class AddItem extends Component {
 
     return (
       <TextInput
-        ref={addItem => this.addItemInput = addItem }
+        ref={submitItem => this.addItemInput = submitItem }
         style={styles.addItem}
         onChangeText={this.onChangeText}
-        onSubmitEditing={this.addItem}
+        onSubmitEditing={this.submitItem}
         placeholder="Add new item"
       />
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addItem: text => dispatch(addItem(text)),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddItem)
