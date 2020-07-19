@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component renders correctly 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "done": false,
+          "key": "Run the tests",
+        },
+        Object {
+          "done": true,
+          "key": "foo",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    maxToRenderPerBatch={10}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={Object {}}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        style={null}
+      >
+        <View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "white",
+                "borderColor": "#bcbbc1",
+                "flexDirection": "row",
+                "padding": 14,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "black",
+                    "fontSize": 17,
+                    "textAlign": "left",
+                  }
+                }
+                testID="listItemTitle"
+                theme={
+                  Object {
+                    "colors": Object {
+                      "disabled": "hsl(208, 8%, 90%)",
+                      "divider": "#bcbbc1",
+                      "error": "#ff190c",
+                      "grey0": "#393e42",
+                      "grey1": "#43484d",
+                      "grey2": "#5e6977",
+                      "grey3": "#86939e",
+                      "grey4": "#bdc6cf",
+                      "grey5": "#e1e8ee",
+                      "greyOutline": "#bbb",
+                      "platform": Object {
+                        "android": Object {
+                          "error": "#f44336",
+                          "primary": "#2196f3",
+                          "secondary": "#9C27B0",
+                          "success": "#4caf50",
+                          "warning": "#ffeb3b",
+                        },
+                        "ios": Object {
+                          "error": "#ff3b30",
+                          "primary": "#007aff",
+                          "secondary": "#5856d6",
+                          "success": "#4cd964",
+                          "warning": "#ffcc00",
+                        },
+                      },
+                      "primary": "#2089dc",
+                      "searchBg": "#303337",
+                      "secondary": "#8F0CE8",
+                      "success": "#52c41a",
+                      "warning": "#faad14",
+                    },
+                  }
+                }
+              >
+                Run the tests
+              </Text>
+            </View>
+            <View
+              width={16}
+            />
+            <TouchableOpacity
+              checkedIcon="check-square-o"
+              size={24}
+              style={
+                Object {
+                  "margin": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "padding": 0,
+                }
+              }
+              testID="checkbox"
+              uncheckedColor="#bfbfbf"
+              uncheckedIcon="square-o"
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-end",
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#bfbfbf",
+                        "fontSize": 24,
+                      },
+                      Object {
+                        "minWidth": 24,
+                      },
+                      Object {
+                        "fontFamily": "FontAwesome",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View
+              width={16}
+            />
+            <TouchableOpacity>
+              <Text
+                style={
+                  Object {
+                    "color": "red",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                X
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+      <View
+        style={null}
+      >
+        <View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "white",
+                "borderColor": "#bcbbc1",
+                "flexDirection": "row",
+                "padding": 14,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "color": "black",
+                    "fontSize": 17,
+                    "textAlign": "left",
+                  }
+                }
+                testID="listItemTitle"
+                theme={
+                  Object {
+                    "colors": Object {
+                      "disabled": "hsl(208, 8%, 90%)",
+                      "divider": "#bcbbc1",
+                      "error": "#ff190c",
+                      "grey0": "#393e42",
+                      "grey1": "#43484d",
+                      "grey2": "#5e6977",
+                      "grey3": "#86939e",
+                      "grey4": "#bdc6cf",
+                      "grey5": "#e1e8ee",
+                      "greyOutline": "#bbb",
+                      "platform": Object {
+                        "android": Object {
+                          "error": "#f44336",
+                          "primary": "#2196f3",
+                          "secondary": "#9C27B0",
+                          "success": "#4caf50",
+                          "warning": "#ffeb3b",
+                        },
+                        "ios": Object {
+                          "error": "#ff3b30",
+                          "primary": "#007aff",
+                          "secondary": "#5856d6",
+                          "success": "#4cd964",
+                          "warning": "#ffcc00",
+                        },
+                      },
+                      "primary": "#2089dc",
+                      "searchBg": "#303337",
+                      "secondary": "#8F0CE8",
+                      "success": "#52c41a",
+                      "warning": "#faad14",
+                    },
+                  }
+                }
+              >
+                foo
+              </Text>
+            </View>
+            <View
+              width={16}
+            />
+            <TouchableOpacity
+              checkedIcon="check-square-o"
+              size={24}
+              style={
+                Object {
+                  "margin": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "padding": 0,
+                }
+              }
+              testID="checkbox"
+              uncheckedColor="#bfbfbf"
+              uncheckedIcon="square-o"
+            >
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-end",
+                  }
+                }
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": "#2089dc",
+                        "fontSize": 24,
+                      },
+                      Object {
+                        "minWidth": 24,
+                      },
+                      Object {
+                        "fontFamily": "FontAwesome",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <View
+              width={16}
+            />
+            <TouchableOpacity>
+              <Text
+                style={
+                  Object {
+                    "color": "red",
+                    "textAlign": "center",
+                  }
+                }
+              >
+                X
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddItem container renders an AddItem 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    placeholder="Add new item"
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderBottomColor": "lightgrey",
+        "borderBottomWidth": 1,
+        "color": "grey",
+        "padding": 15,
+        "textAlign": "left",
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;
