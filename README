@@ -1,1 +1,1 @@
-This version shares the data by storing the todolist data in a state of a parent component and pushing it down to children via props.
+This version uses redux to separate the logic and the presentation.
