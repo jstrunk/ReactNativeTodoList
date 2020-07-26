@@ -8,154 +8,68 @@ describe('listReducer', () => {
 */
   it('should add an item to the empty state', () => {
     expect(
-      reducer([], {
+      reducer(types.defaultState, {
         type: types.ADD_ITEM,
-        text: 'Run the tests'
+        text: 'Run the tests',
+        id: 'abc1',
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      }
-    ]);
+    ).toEqual(['abc1']);
   });
 
   it('should add an item to the non-empty state', () => {
     expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: false,
-        }
-      ], {
+      reducer(['abc1'], {
         type: types.ADD_ITEM,
-        text: 'foo'
+        text: 'foo',
+        id: 'def2',
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      },
-      {
-        key: 'foo',
-        done: false,
-      },
-    ]);
+    ).toEqual(['abc1', 'def2']);
   });
 
   it('should do nothing on empty ADD_ITEM', () => {
     expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: false,
-        }
-      ], {
+      reducer(['abc1'], {
         type: types.ADD_ITEM,
-        text: ''
+        text: '',
+        id: 'ghi3',
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      },
-    ]);
+    ).toEqual(['abc1']);
   });
 
   it('should delete an item from the state', () => {
     expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: false,
-        },
-        {
-          key: 'foo',
-          done: false,
-        },
-      ], {
+      reducer(['abc1', 'def2'], {
         type: types.DELETE_ITEM,
-        index: 1,
+        id: 'def2',
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      },
-    ]);
+    ).toEqual(['abc1']);
   });
 
   it('should toggle an item in the state', () => {
     expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: false,
-        },
-        {
-          key: 'foo',
-          done: false,
-        },
-      ], {
+      reducer(['abc1', 'def2'], {
         type: types.TOGGLE_ITEM,
-        index: 1,
+        id: 'def2',
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      },
-      {
-        key: 'foo',
-        done: true,
-      },
-    ]);
+    ).toEqual(['abc1', 'def2']);
+  });
+
+  it('should delete all completed items from the state NO-OP', () => {
+    expect(
+      reducer(['abc1', 'def2'], {
+        type: types.DELETE_COMPLETED,
+        ids: [],
+      })
+    ).toEqual(['abc1', 'def2']);
   });
 
   it('should delete all completed items from the state', () => {
     expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: false,
-        },
-        {
-          key: 'foo',
-          done: false,
-        },
-      ], {
+      reducer(['abc1', 'def2'], {
         type: types.DELETE_COMPLETED,
+        ids: ['abc1'],
       })
-    ).toEqual([
-      {
-        key: 'Run the tests',
-        done: false,
-      },
-      {
-        key: 'foo',
-        done: false,
-      },
-    ]);
-
-    expect(
-      reducer([
-        {
-          key: 'Run the tests',
-          done: true,
-        },
-        {
-          key: 'foo',
-          done: false,
-        },
-      ], {
-        type: types.DELETE_COMPLETED,
-      })
-    ).toEqual([
-      {
-        key: 'foo',
-        done: false,
-      },
-    ]);
+    ).toEqual(['def2']);
   });
 
 });

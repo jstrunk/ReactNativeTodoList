@@ -13,16 +13,17 @@ describe('AddItem container', () => {
 
   beforeEach(() => {
     store = mockStore({
-      todoList: [
-        {
+      todoItems: {
+        abc1: {
           key: 'Run the tests',
           done: true,
         },
-        {
+        def2: {
           key: 'foo',
           done: false,
         },
-      ],
+      },
+      todoList: ['abc1', 'def2'],
     });
 
     store.dispatch = jest.fn();
@@ -51,7 +52,7 @@ describe('AddItem container', () => {
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.addItem('Hello World!')
+      actions.addItem('Hello World!', 'ghi3')
     );
   });
 

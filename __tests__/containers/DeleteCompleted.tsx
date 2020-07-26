@@ -14,16 +14,17 @@ describe('DeleteCompleted container', () => {
 
   beforeEach(() => {
     store = mockStore({
-      todoList: [
-        {
+      todoItems: {
+        abc1: {
           key: 'Run the tests',
           done: true,
         },
-        {
+        def2: {
           key: 'foo',
           done: false,
         },
-      ],
+      },
+      todoList: ['abc1', 'def2'],
     });
 
     store.dispatch = jest.fn();
@@ -43,7 +44,7 @@ describe('DeleteCompleted container', () => {
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.deleteCompleted()
+      actions.deleteCompleted(['abc1'])
     );
   });
 });

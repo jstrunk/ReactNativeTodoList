@@ -4,35 +4,39 @@ import * as types from '../../../src/redux/types';
 describe('actions', () => {
   it('should create an action to add an item', () => {
     const text = 'foo';
+    const id = 'abc1';
     const expectedAction = {
       type: types.ADD_ITEM,
       text,
+      id,
     };
-    expect(actions.addItem(text)).toEqual(expectedAction);
+    expect(actions.addItem(text, id)).toEqual(expectedAction);
   });
 
   it('should create an action to toggle an item', () => {
-    const index = 1;
+    const id = 'abc1';
     const expectedAction = {
       type: types.TOGGLE_ITEM,
-      index,
+      id,
     };
-    expect(actions.toggleItem(index)).toEqual(expectedAction);
+    expect(actions.toggleItem(id)).toEqual(expectedAction);
   });
 
   it('should create an action to delete an item', () => {
-    const index = 1;
+    const id = 'abc1';
     const expectedAction = {
       type: types.DELETE_ITEM,
-      index,
+      id,
     };
-    expect(actions.deleteItem(index)).toEqual(expectedAction);
+    expect(actions.deleteItem(id)).toEqual(expectedAction);
   });
 
   it('should create an action to delete completed items', () => {
+    const ids = ['abc1'];
     const expectedAction = {
       type: types.DELETE_COMPLETED,
+      ids,
     };
-    expect(actions.deleteCompleted()).toEqual(expectedAction);
+    expect(actions.deleteCompleted(ids)).toEqual(expectedAction);
   });
 });

@@ -13,16 +13,17 @@ describe('TodoList container', () => {
 
   beforeEach(() => {
     store = mockStore({
-      todoList: [
-        {
+      todoItems: {
+        abc1: {
           key: 'Run the tests',
           done: true,
         },
-        {
+        def2: {
           key: 'foo',
           done: false,
         },
-      ],
+      },
+      todoList: ['abc1', 'def2'],
     });
 
     store.dispatch = jest.fn();
@@ -51,7 +52,7 @@ describe('TodoList container', () => {
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.toggleItem(0)
+      actions.toggleItem('def2')
     );
   });
 
@@ -69,7 +70,7 @@ describe('TodoList container', () => {
 
     expect(store.dispatch).toHaveBeenCalledTimes(2);
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.deleteItem(0)
+      actions.deleteItem('abc1')
     );
   });
 });

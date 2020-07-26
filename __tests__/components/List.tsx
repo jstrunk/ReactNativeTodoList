@@ -9,10 +9,12 @@ describe('List component', () => {
     {
       key: 'Run the tests',
       done: false,
+      id: 'abc1',
     },
     {
       key: 'foo',
       done: true,
+      id: 'def2',
     },
   ];
 
