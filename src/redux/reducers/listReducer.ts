@@ -1,28 +1,24 @@
 import { ADD_ITEM,
   DELETE_ITEM,
-  TOGGLE_ITEM,
   DELETE_COMPLETED,
   TodoActionType,
   ITodoList } from '../types';
 
-function todoApp(state: ITodoList = [], action: TodoActionType): ITodoList {
+
+function todoListReducer(state: ITodoList = [], action: TodoActionType): ITodoList {
   switch(action.type) {
     case ADD_ITEM:
-      if (action.text != '') return [...state, {key: action.text, done: false}];
-      else return [...state];
-    case TOGGLE_ITEM:
-      return state.map((item, index) => {
-        return {...item,
-          ...(index === action.index) && { done: !item.done},
-        };
-      });
+      if (action.text != '' && action.id) {
+        return [...state, action.id];
+      }
+      else return state;
     case DELETE_ITEM:
-      return state.filter((item, index) => index != action.index);
+      return state.filter((item) => item != action.id);
     case DELETE_COMPLETED:
-      return state.filter(item => !item.done);
+      return state.filter((item) => !action.ids.includes(item));
     default:
       return state;
   }
 }
 
-export default todoApp;
+export default todoListReducer;
