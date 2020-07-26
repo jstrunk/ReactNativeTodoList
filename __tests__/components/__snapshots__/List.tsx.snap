@@ -13,14 +13,8 @@ exports[`List component renders correctly 1`] = `
   <RCTScrollView
     data={
       Array [
-        Object {
-          "done": false,
-          "key": "Run the tests",
-        },
-        Object {
-          "done": true,
-          "key": "foo",
-        },
+        "abc1",
+        "def2",
       ]
     }
     disableVirtualization={false}
@@ -110,90 +104,7 @@ exports[`List component renders correctly 1`] = `
                   }
                 }
               >
-                Run the tests
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "paddingLeft": 16,
-                }
-              }
-            />
-            <TouchableOpacity
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": false,
-                }
-              }
-              checkedIcon="check-square-o"
-              size={24}
-              style={
-                Object {
-                  "margin": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "padding": 0,
-                }
-              }
-              testID="checkbox"
-              uncheckedColor="#bfbfbf"
-              uncheckedIcon="square-o"
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-end",
-                  }
-                }
-              >
-                <Text
-                  allowFontScaling={false}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#bfbfbf",
-                        "fontSize": 24,
-                      },
-                      Object {
-                        "minWidth": 24,
-                      },
-                      Object {
-                        "fontFamily": "FontAwesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      Object {},
-                    ]
-                  }
-                >
-                  
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <View
-              style={
-                Object {
-                  "paddingLeft": 16,
-                }
-              }
-            />
-            <View
-              accessible={true}
-              focusable={true}
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "red",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                X
+                abc1
               </Text>
             </View>
           </View>
@@ -272,90 +183,7 @@ exports[`List component renders correctly 1`] = `
                   }
                 }
               >
-                foo
-              </Text>
-            </View>
-            <View
-              style={
-                Object {
-                  "paddingLeft": 16,
-                }
-              }
-            />
-            <TouchableOpacity
-              accessibilityRole="checkbox"
-              accessibilityState={
-                Object {
-                  "checked": true,
-                }
-              }
-              checkedIcon="check-square-o"
-              size={24}
-              style={
-                Object {
-                  "margin": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "padding": 0,
-                }
-              }
-              testID="checkbox"
-              uncheckedColor="#bfbfbf"
-              uncheckedIcon="square-o"
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-end",
-                  }
-                }
-              >
-                <Text
-                  allowFontScaling={false}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#2089dc",
-                        "fontSize": 24,
-                      },
-                      Object {
-                        "minWidth": 24,
-                      },
-                      Object {
-                        "fontFamily": "FontAwesome",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      Object {},
-                    ]
-                  }
-                >
-                  
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <View
-              style={
-                Object {
-                  "paddingLeft": 16,
-                }
-              }
-            />
-            <View
-              accessible={true}
-              focusable={true}
-            >
-              <Text
-                style={
-                  Object {
-                    "color": "red",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                X
+                def2
               </Text>
             </View>
           </View>
