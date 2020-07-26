@@ -1,16 +1,16 @@
 import 'react-native';
 import React from 'react';
 import {Text} from 'react-native';
-import DeletePressable from '../../src/containers/DeletePressable';
+import DeleteCompleted from '../../src/containers/DeleteCompleted';
 import * as actions from '../../src/redux/actions';
 import { Provider } from 'react-redux';
-import { render, fireEvent, screen } from '@testing-library/react-native'
-import configureStore from 'redux-mock-store';
+import { render, fireEvent } from '@testing-library/react-native'
+import configureStore, { MockStore } from 'redux-mock-store';
 
 const mockStore = configureStore([]);
 
-describe('DeletePressable container', () => {
-  let store;
+describe('DeleteCompleted container', () => {
+  let store: MockStore;
 
   beforeEach(() => {
     store = mockStore({
@@ -30,11 +30,11 @@ describe('DeletePressable container', () => {
   });
 
   it('should dispatch a delete completed items action', () => {
-    const { getByText, asJSON } = render(
+    const { getByText } = render(
       <Provider store={store}>
-        <DeletePressable>
+        <DeleteCompleted>
           <Text>Delete Completed</Text>
-        </DeletePressable>
+        </DeleteCompleted>
       </Provider>
     );
 

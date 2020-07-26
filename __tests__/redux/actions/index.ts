@@ -1,5 +1,5 @@
 import * as actions from '../../../src/redux/actions';
-import * as types from '../../../src/redux/constants';
+import * as types from '../../../src/redux/types';
 
 describe('actions', () => {
   it('should create an action to add an item', () => {

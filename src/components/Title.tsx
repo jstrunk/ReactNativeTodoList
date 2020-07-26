@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 
+interface Props {
+  children: string;
+}
+
 const styles = StyleSheet.create({
   header: {
     backgroundColor: 'skyblue',
@@ -12,10 +16,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Title extends Component {
+export default class Title extends Component<Props> {
 
-  render() {
-
+  render(): JSX.Element {
     return (
       <View style={styles.header}>
         <Text style={styles.title}>{this.props.children}</Text>

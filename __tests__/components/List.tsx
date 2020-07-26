@@ -2,7 +2,7 @@ import 'react-native';
 import React from 'react';
 import List from '../../src/components/List';
 
-import { render, fireEvent, screen } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 
 describe('List component', () => {
   const items = [

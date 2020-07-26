@@ -3,13 +3,13 @@ import React from 'react';
 import TodoList from '../../src/containers/TodoList';
 import * as actions from '../../src/redux/actions';
 import { Provider } from 'react-redux';
-import { render, fireEvent, screen } from '@testing-library/react-native'
-import configureStore from 'redux-mock-store';
+import { render, fireEvent } from '@testing-library/react-native'
+import configureStore, { MockStore } from 'redux-mock-store';
 
 const mockStore = configureStore([]);
 
 describe('TodoList container', () => {
-  let store;
+  let store: MockStore;
 
   beforeEach(() => {
     store = mockStore({

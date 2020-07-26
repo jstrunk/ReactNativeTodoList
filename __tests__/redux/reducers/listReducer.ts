@@ -1,13 +1,12 @@
-import * as actions from '../../../src/redux/actions';
-import * as types from '../../../src/redux/constants';
+import * as types from '../../../src/redux/types';
 import reducer from '../../../src/redux/reducers/listReducer';
 
 describe('listReducer', () => {
-  it('should return the initial state', () => {
+/*  it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual([]);
   });
-
-  it('should add an item to the state', () => {
+*/
+  it('should add an item to the empty state', () => {
     expect(
       reducer([], {
         type: types.ADD_ITEM,
@@ -19,7 +18,9 @@ describe('listReducer', () => {
         done: false,
       }
     ]);
+  });
 
+  it('should add an item to the non-empty state', () => {
     expect(
       reducer([
         {
@@ -37,6 +38,25 @@ describe('listReducer', () => {
       },
       {
         key: 'foo',
+        done: false,
+      },
+    ]);
+  });
+
+  it('should do nothing on empty ADD_ITEM', () => {
+    expect(
+      reducer([
+        {
+          key: 'Run the tests',
+          done: false,
+        }
+      ], {
+        type: types.ADD_ITEM,
+        text: ''
+      })
+    ).toEqual([
+      {
+        key: 'Run the tests',
         done: false,
       },
     ]);

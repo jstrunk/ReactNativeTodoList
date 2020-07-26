@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {Text,StyleSheet} from 'react-native';
-import DeletePressable from '../containers/DeletePressable';
+import DeleteCompleted from '../containers/DeleteCompleted';
+
+interface Props {
+  children: string;
+}
 
 const styles = StyleSheet.create({
   footer: {
@@ -17,12 +21,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Footer extends Component {
-  render() {
+export default class Footer extends Component<Props> {
+  render(): JSX.Element {
     return (
-      <DeletePressable style={styles.footer}>
+      <DeleteCompleted style={styles.footer}>
         <Text style={styles.remove}>{this.props.children}</Text>
-      </DeletePressable>
+      </DeleteCompleted>
     );
   }
 }

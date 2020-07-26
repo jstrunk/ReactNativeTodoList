@@ -51,10 +51,12 @@ exports[`List component renders correctly 1`] = `
                 "padding": 14,
               }
             }
+            testID="padView"
           >
             <View
               style={
                 Object {
+                  "alignItems": "flex-start",
                   "flex": 1,
                   "justifyContent": "center",
                 }
@@ -112,9 +114,19 @@ exports[`List component renders correctly 1`] = `
               </Text>
             </View>
             <View
-              width={16}
+              style={
+                Object {
+                  "paddingLeft": 16,
+                }
+              }
             />
             <TouchableOpacity
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": false,
+                }
+              }
               checkedIcon="check-square-o"
               size={24}
               style={
@@ -163,9 +175,16 @@ exports[`List component renders correctly 1`] = `
               </View>
             </TouchableOpacity>
             <View
-              width={16}
+              style={
+                Object {
+                  "paddingLeft": 16,
+                }
+              }
             />
-            <TouchableOpacity>
+            <View
+              accessible={true}
+              focusable={true}
+            >
               <Text
                 style={
                   Object {
@@ -176,7 +195,7 @@ exports[`List component renders correctly 1`] = `
               >
                 X
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -194,10 +213,12 @@ exports[`List component renders correctly 1`] = `
                 "padding": 14,
               }
             }
+            testID="padView"
           >
             <View
               style={
                 Object {
+                  "alignItems": "flex-start",
                   "flex": 1,
                   "justifyContent": "center",
                 }
@@ -255,9 +276,19 @@ exports[`List component renders correctly 1`] = `
               </Text>
             </View>
             <View
-              width={16}
+              style={
+                Object {
+                  "paddingLeft": 16,
+                }
+              }
             />
             <TouchableOpacity
+              accessibilityRole="checkbox"
+              accessibilityState={
+                Object {
+                  "checked": true,
+                }
+              }
               checkedIcon="check-square-o"
               size={24}
               style={
@@ -306,9 +337,16 @@ exports[`List component renders correctly 1`] = `
               </View>
             </TouchableOpacity>
             <View
-              width={16}
+              style={
+                Object {
+                  "paddingLeft": 16,
+                }
+              }
             />
-            <TouchableOpacity>
+            <View
+              accessible={true}
+              focusable={true}
+            >
               <Text
                 style={
                   Object {
@@ -319,7 +357,7 @@ exports[`List component renders correctly 1`] = `
               >
                 X
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

@@ -1,0 +1,29 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "jest",
+  ],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+  ],
+  "settings": {
+    "react": {
+      "version": "detect",
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+  },
+}

@@ -1,12 +1,15 @@
-import { ADD_ITEM, DELETE_ITEM, TOGGLE_ITEM, DELETE_COMPLETED } from '../constants';
+import { ADD_ITEM,
+  DELETE_ITEM,
+  TOGGLE_ITEM,
+  DELETE_COMPLETED,
+  TodoActionType,
+  ITodoList } from '../types';
 
-function todoApp(state = [], action) {
+function todoApp(state: ITodoList = [], action: TodoActionType): ITodoList {
   switch(action.type) {
     case ADD_ITEM:
-      return [
-        ...state,
-        ...(action.text != '') && [{key: action.text, done: false}],
-      ];
+      if (action.text != '') return [...state, {key: action.text, done: false}];
+      else return [...state];
     case TOGGLE_ITEM:
       return state.map((item, index) => {
         return {...item,
