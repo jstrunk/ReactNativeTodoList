@@ -11,6 +11,7 @@ import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import { connect, ConnectedProps } from 'react-redux';
 import {  deleteCompleted } from '../redux/actions';
+import { ITodoList, ITodoState } from '../redux/types';
 
 const styles = StyleSheet.create({
   default: {
@@ -23,12 +24,17 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapStateToProps = (state: ITodoState) => ({
+  items: state.todoItems,
+  order: state.todoList,
+})
+
 const mapDispatch = {
-  deleteCompleted: () => deleteCompleted()
+  deleteCompleted: (ids: ITodoList) => deleteCompleted(ids)
 };
 
 const connector = connect(
-  null,
+  mapStateToProps,
   mapDispatch
 );
 
@@ -48,9 +54,11 @@ const DeleteCompleted = (props: Props) => {
     pressableStyle = styles.default;
   }
 
+  // eslint-disable-next-line react/prop-types
+  const completed = props.order.filter((id: string) => props.items[id].done);
   return (
   // eslint-disable-next-line react/prop-types
-  <Pressable style={pressableStyle} onPress={props.deleteCompleted}>
+  <Pressable style={pressableStyle} onPress={() => props.deleteCompleted(completed)}>
     {props.children}
   </Pressable>
 )};
