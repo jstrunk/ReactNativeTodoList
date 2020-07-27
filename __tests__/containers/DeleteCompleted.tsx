@@ -14,17 +14,19 @@ describe('DeleteCompleted container', () => {
 
   beforeEach(() => {
     store = mockStore({
-      todoItems: {
-        abc1: {
-          key: 'Run the tests',
-          done: true,
+      todoList: {
+        byId: {
+          abc1: {
+            key: 'Run the tests',
+            done: true,
+          },
+          def2: {
+            key: 'foo',
+            done: false,
+          },
         },
-        def2: {
-          key: 'foo',
-          done: false,
-        },
+        allItems: ['abc1', 'def2'],
       },
-      todoList: ['abc1', 'def2'],
     });
 
     store.dispatch = jest.fn();

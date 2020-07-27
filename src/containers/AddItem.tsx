@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state: ITodoState) => ({
-  order: state.todoList,
+  order: state.todoList.allItems,
 })
 
 const mapDispatch = {

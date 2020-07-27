@@ -11,7 +11,7 @@ import List from '../components/List';
 import { ITodoState } from '../redux/types';
 
 const mapStateToProps = (state: ITodoState) => ({
-  order: state.todoList,
+  order: state.todoList.allItems,
 })
 
 const connector = connect(

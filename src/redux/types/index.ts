@@ -3,16 +3,19 @@ export interface Todo {
   done: boolean;
 }
 
-export type ITodoItems = Record<string,Todo>;
-export type ITodoList = Array<string>;
+export interface ITodoList {
+  byId: Record<string,Todo>;
+  allItems: Array<string>;
+}
 
 export interface ITodoState {
-  todoItems: ITodoItems;
   todoList: ITodoList;
 }
 
-export const defaultTodoState: ITodoItems = {};
-export const defaultListState: ITodoList = [];
+export const defaultState: ITodoList = {
+  byId: {},
+  allItems: [],
+};
 
 export const ADD_ITEM = "ADD_ITEM";
 export const TOGGLE_ITEM = "TOGGLE_ITEM";

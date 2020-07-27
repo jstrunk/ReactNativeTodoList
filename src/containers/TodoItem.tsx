@@ -32,7 +32,7 @@ interface OwnProps {
 }
 
 const mapStateToProps = (state: ITodoState) => ({
-  items: state.todoItems,
+  items: state.todoList.byId,
 })
 
 const mapDispatch = {

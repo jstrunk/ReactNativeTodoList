@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {FlatList,StyleSheet} from 'react-native';
-import { ITodoList } from '../redux/types';
 import TodoItem from '../containers/TodoItem';
 
 interface Props {
-  items: ITodoList;
+  items: Array<string>;
 }
 
 interface ItemProps {
@@ -40,6 +39,7 @@ export default class List extends Component<Props> {
         style={styles.list}
         data={this.props.items}
         renderItem={this.renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
     );
   }
