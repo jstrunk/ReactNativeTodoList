@@ -22,9 +22,16 @@ function todoListReducer(state: ITodoList = defaultState, action: TodoActionType
       else return state;
     case TOGGLE_ITEM:
       items[action.id].done = !items[action.id].done;
+      const allItems = [...state.allItems];
+      allItems.sort((a: string, b: string): number => {
+        if (items[a].done && items[b].done) return 0;
+        else if (items[a].done && !items[b].done) return 1;
+        else if (!items[a].done && items[b].done) return -1;
+        else return 0;
+      });
       return {
         byId: items,
-        allItems: state.allItems,
+        allItems: allItems,
       };
     case DELETE_ITEM:
       delete items[action.id];
