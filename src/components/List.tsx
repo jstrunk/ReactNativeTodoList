@@ -1,15 +1,19 @@
-import React, {Component} from 'react';
-import {FlatList,StyleSheet} from 'react-native';
+import React, {Component, ReactNode} from 'react';
+import {StyleSheet} from 'react-native';
+import DraggableFlatList from 'react-native-draggable-flatlist'
 import TodoItem from '../containers/TodoItem';
+import { TodoActionType } from '../redux/types';
 
 interface Props {
   items: Array<string>;
+  reorderList: (ids: Array<string>) => TodoActionType;
 }
 
 interface ItemProps {
   item: string;
   index?: number;
-  separators?: any;
+  drag: () => void;
+  isActive?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -29,17 +33,18 @@ const styles = StyleSheet.create({
 });
 
 export default class List extends Component<Props> {
-  renderItem = (itemProps: ItemProps): any => (
-    <TodoItem id={itemProps.item} styles={styles}/>
+  renderItem = (itemProps: ItemProps): ReactNode => (
+    <TodoItem id={itemProps.item} styles={styles} drag={itemProps.drag} />
   );
 
   render(): JSX.Element {
     return (
-      <FlatList
+      <DraggableFlatList
         style={styles.list}
         data={this.props.items}
         renderItem={this.renderItem}
         keyExtractor={(item, index) => index.toString()}
+        onDragEnd={({ data }) => this.props.reorderList(data)}
       />
     );
   }

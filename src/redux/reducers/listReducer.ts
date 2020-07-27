@@ -1,6 +1,7 @@
 import { ADD_ITEM,
   DELETE_ITEM,
   DELETE_COMPLETED,
+  REORDER_LIST,
   TodoActionType,
   defaultState,
   ITodoList, 
@@ -37,6 +38,11 @@ function todoListReducer(state: ITodoList = defaultState, action: TodoActionType
         byId: items,
         allItems: state.allItems.filter((item) => !action.ids.includes(item)),
       };
+    case REORDER_LIST:
+      return {
+        byId: state.byId,
+        allItems: action.ids,
+      }
     default:
       return state;
   }

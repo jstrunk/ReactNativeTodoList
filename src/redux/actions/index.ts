@@ -2,6 +2,7 @@ import { ADD_ITEM,
   DELETE_ITEM,
   TOGGLE_ITEM,
   DELETE_COMPLETED,
+  REORDER_LIST,
   TodoActionType, } from '../types';
 
 export function addItem(text: string, id: string): TodoActionType {
@@ -18,4 +19,8 @@ export function deleteItem(id: string): TodoActionType {
 
 export function deleteCompleted(ids: Array<string>): TodoActionType {
   return { type: DELETE_COMPLETED, ids };
+}
+
+export function reorderList(ids: Array<string>): TodoActionType {
+  return { type: REORDER_LIST, ids };
 }

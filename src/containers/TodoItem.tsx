@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
 
 interface OwnProps {
   id: string;
+  drag: () => void;
   styles?: typeof styles;
 }
 
@@ -56,6 +57,7 @@ const TodoItem = (props: Props) => {
     <ListItem
       title={item.key}
       titleStyle={style.item}
+      onLongPress={props.drag}
       checkBox={{
         right: true,
         checked: item.done,
