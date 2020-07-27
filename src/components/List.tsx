@@ -18,6 +18,7 @@ interface ItemProps {
 
 const styles = StyleSheet.create({
   list: {
+    marginBottom: 40,
   },
   item: {
     textAlign: 'left',
