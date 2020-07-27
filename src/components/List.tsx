@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: 'black',
   },
+  itemdone: {
+    textAlign: 'left',
+    color: 'black',
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
+  },
   remove: {
     textAlign: 'center',
     color: 'red',
