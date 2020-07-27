@@ -15,6 +15,7 @@ interface ItemProps {
 
 const styles = StyleSheet.create({
   list: {
+    marginBottom: 40,
   },
   item: {
     textAlign: 'left',
@@ -40,6 +41,7 @@ export default class List extends Component<Props> {
         style={styles.list}
         data={this.props.items}
         renderItem={this.renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
     );
   }

@@ -52,7 +52,7 @@ describe('AddItem container', () => {
     fireEvent.changeText(element, 'Hello World!');
     fireEvent.submitEditing(element);
 
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 500));
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -72,7 +72,7 @@ describe('AddItem container', () => {
     fireEvent.changeText(element, 'def2');
     fireEvent.submitEditing(element);
 
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 500));
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
   });

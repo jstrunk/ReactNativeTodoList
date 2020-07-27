@@ -25,7 +25,11 @@ exports[`List component renders correctly 1`] = `
     removeClippedSubviews={false}
     scrollEventThrottle={50}
     stickyHeaderIndices={Array []}
-    style={Object {}}
+    style={
+      Object {
+        "marginBottom": 40,
+      }
+    }
     updateCellsBatchingPeriod={50}
     viewabilityConfigCallbackPairs={Array []}
     windowSize={21}

@@ -13,5 +13,5 @@ import renderer from 'react-test-renderer';
 jest.useFakeTimers();
 
 it('renders correctly', () => {
-  renderer.create(<App />);
+  expect(renderer.create(<App />)).not.toBeFalsy();
 });
