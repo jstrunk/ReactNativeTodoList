@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
-import {FlatList,StyleSheet} from 'react-native';
-import { ITodoList } from '../redux/types';
+import {StyleSheet} from 'react-native';
+import DraggableFlatList from 'react-native-draggable-flatlist';
+import { ITodoList, TodoActionType } from '../redux/types';
 import TodoItem from '../containers/TodoItem';
 
 interface Props {
   items: ITodoList;
+  reorderList: (ids: Array<string>) => TodoActionType;
 }
 
 interface ItemProps {
   item: string;
   index?: number;
-  separators?: any;
+  drag: () => void;
+  isActive?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -20,6 +23,12 @@ const styles = StyleSheet.create({
   item: {
     textAlign: 'left',
     color: 'black',
+  },
+  itemdone: {
+    textAlign: 'left',
+    color: 'black',
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
   },
   remove: {
     textAlign: 'center',
@@ -32,16 +41,17 @@ const styles = StyleSheet.create({
 
 export default class List extends Component<Props> {
   renderItem = (itemProps: ItemProps): any => (
-    <TodoItem id={itemProps.item} styles={styles}/>
+    <TodoItem id={itemProps.item} styles={styles} drag={itemProps.drag} />
   );
 
   render(): JSX.Element {
     return (
-      <FlatList
+      <DraggableFlatList
         style={styles.list}
         data={this.props.items}
         renderItem={this.renderItem}
         keyExtractor={(item, index) => index.toString()}
+        onDragEnd={({ data }) => this.props.reorderList(data)}
       />
     );
   }

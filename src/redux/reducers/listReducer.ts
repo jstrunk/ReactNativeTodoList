@@ -1,6 +1,7 @@
 import { ADD_ITEM,
   DELETE_ITEM,
   DELETE_COMPLETED,
+  REORDER_LIST,
   TodoActionType,
   ITodoList } from '../types';
 
@@ -16,6 +17,8 @@ function todoListReducer(state: ITodoList = [], action: TodoActionType): ITodoLi
       return state.filter((item) => item != action.id);
     case DELETE_COMPLETED:
       return state.filter((item) => !action.ids.includes(item));
+    case REORDER_LIST:
+      return action.ids;
     default:
       return state;
   }

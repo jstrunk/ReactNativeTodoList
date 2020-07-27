@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: 'black',
   },
+  itemdone: {
+    textAlign: 'left',
+    color: 'black',
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
+  },
   remove: {
     textAlign: 'center',
     color: 'red',
@@ -28,6 +34,7 @@ const styles = StyleSheet.create({
 
 interface OwnProps {
   id: string;
+  drag: () => void;
   styles?: typeof styles;
 }
 
@@ -55,7 +62,8 @@ const TodoItem = (props: Props) => {
   return (
     <ListItem
       title={item.key}
-      titleStyle={style.item}
+      titleStyle={item.done? style.itemdone : style.item}
+      onLongPress={props.drag}
       checkBox={{
         right: true,
         checked: item.done,
