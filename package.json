@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js run-android",
+    "start-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "react-native": "node node_modules/react-native/local-cli/cli.js",
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx",
     "tsc": "tsc",
