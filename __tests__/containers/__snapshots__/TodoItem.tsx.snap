@@ -36,9 +36,7 @@ exports[`TodoItem container renders a TodoItem 1`] = `
           style={
             Object {
               "backgroundColor": "transparent",
-              "color": "black",
               "fontSize": 17,
-              "textAlign": "left",
             }
           }
           testID="listItemTitle"

@@ -142,6 +142,72 @@ describe('listReducer', () => {
     });
   });
 
+  it('should reorder items on completion', () => {
+    expect(
+      reducer({
+        byId: {
+          abc1: {
+            key: 'Run the tests',
+            done: false,
+          },
+          def2: {
+            key: 'foo',
+            done: false,
+          },
+        },
+        allItems: ['abc1', 'def2'],
+      }, {
+        type: types.TOGGLE_ITEM,
+        id: 'abc1',
+      })
+    ).toEqual({
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: true,
+        },
+        def2: {
+          key: 'foo',
+          done: false,
+        },
+      },
+      allItems: ['def2', 'abc1'],
+    });
+  });
+
+  it('should reorder items on completion done to undone', () => {
+    expect(
+      reducer({
+        byId: {
+          abc1: {
+            key: 'Run the tests',
+            done: false,
+          },
+          def2: {
+            key: 'foo',
+            done: true,
+          },
+        },
+        allItems: ['abc1', 'def2'],
+      }, {
+        type: types.TOGGLE_ITEM,
+        id: 'def2',
+      })
+    ).toEqual({
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: false,
+        },
+        def2: {
+          key: 'foo',
+          done: false,
+        },
+      },
+      allItems: ['abc1', 'def2'],
+    });
+  });
+
   it('should delete all completed items from the state NO-OP', () => {
     expect(
       reducer({
@@ -203,5 +269,39 @@ describe('listReducer', () => {
       allItems: ['def2'],
     });
   });
+
+  it('should reorder the list', () => {
+    expect(
+      reducer({
+        byId: {
+          abc1: {
+            key: 'Run the tests',
+            done: false,
+          },
+          def2: {
+            key: 'foo',
+            done: false,
+          },
+        },
+        allItems: ['abc1', 'def2'],
+      }, {
+        type: types.REORDER_LIST,
+        ids: ['def2', 'abc1'],
+      })
+    ).toEqual({
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: false,
+        },
+        def2: {
+          key: 'foo',
+          done: false,
+        },
+      },
+      allItems: ['def2', 'abc1'],
+    });
+  });
+
 
 });

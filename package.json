@@ -63,7 +63,8 @@
       "text"
     ],
     "setupFiles": [
-      "./jestSetupFile.js"
+      "./jestSetupFile.js",
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
     ]
   }
 }

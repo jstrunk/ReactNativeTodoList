@@ -1,6 +1,6 @@
 import React, {Component, ReactNode} from 'react';
 import {StyleSheet} from 'react-native';
-import DraggableFlatList from 'react-native-draggable-flatlist'
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import TodoItem from '../containers/TodoItem';
 import { TodoActionType } from '../redux/types';
 

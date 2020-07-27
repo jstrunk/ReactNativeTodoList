@@ -39,4 +39,12 @@ describe('actions', () => {
     };
     expect(actions.deleteCompleted(ids)).toEqual(expectedAction);
   });
-});
+
+  it('should create an action to reorder items', () => {
+    const ids = ['abc1', 'def2'];
+    const expectedAction = {
+      type: types.REORDER_LIST,
+      ids,
+    };
+    expect(actions.reorderList(ids)).toEqual(expectedAction);
+  });});

@@ -24,8 +24,7 @@ function todoListReducer(state: ITodoList = defaultState, action: TodoActionType
       items[action.id].done = !items[action.id].done;
       const allItems = [...state.allItems];
       allItems.sort((a: string, b: string): number => {
-        if (items[a].done && items[b].done) return 0;
-        else if (items[a].done && !items[b].done) return 1;
+        if (items[a].done && !items[b].done) return 1;
         else if (!items[a].done && items[b].done) return -1;
         else return 0;
       });
