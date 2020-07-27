@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {TextInput,StyleSheet} from 'react-native';
 import { connect, ConnectedProps } from 'react-redux'
 import { addItem } from '../redux/actions'
+import { ITodoState } from '../redux/types';
+import itemId from '../lib/itemId';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,12 +18,16 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapStateToProps = (state: ITodoState) => ({
+  order: state.todoList,
+})
+
 const mapDispatch = {
-  addItem: (text: string) => addItem(text),
+  addItem: (text: string, id: string) => addItem(text, id),
 }
 
 const connector = connect(
-  null,
+  mapStateToProps,
   mapDispatch
 );
 
@@ -45,9 +51,13 @@ class AddItem extends Component<PropsFromRedux, AddItemState> {
     this.setState({newItem: text});
   }
 
-  submitItem = () => {
+  submitItem = async () => {
     if (this.state.newItem == '') return;
-    this.props.addItem(this.state.newItem);
+    let newId = await itemId(this.state.newItem);
+    if (this.props.order.includes(newId)) {
+      newId = await itemId(this.state.newItem + '1');
+    }
+    this.props.addItem(this.state.newItem, newId);
     this.setState({newItem: ''});
     if (this.addItemInput !== null && this.addItemInput.current !== null) {
       this.addItemInput.current.setNativeProps({text: ''});

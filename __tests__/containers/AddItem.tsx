@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react-native'
 import configureStore, { MockStore } from 'redux-mock-store';
 
+jest.mock('../../src/lib/itemId');
+
 const mockStore = configureStore([]);
 
 describe('AddItem container', () => {
@@ -38,7 +40,7 @@ describe('AddItem container', () => {
     expect(asJSON()).toMatchSnapshot();
   });
 
-  it('should dispatch an add item action', () => {
+  it('should dispatch an add item action', async () => {
     const { getByPlaceholderText } = render(
       <Provider store={store}>
         <AddItem />
@@ -50,10 +52,29 @@ describe('AddItem container', () => {
     fireEvent.changeText(element, 'Hello World!');
     fireEvent.submitEditing(element);
 
+    await new Promise((r) => setTimeout(r, 2000));
+
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(
-      actions.addItem('Hello World!', 'ghi3')
+      actions.addItem('Hello World!', 'Hello World!')
     );
+  });
+
+  it('should handle id collisions', async () => {
+    const { getByPlaceholderText } = render(
+      <Provider store={store}>
+        <AddItem />
+      </Provider>
+    );
+
+    const element = getByPlaceholderText('Add new item');
+
+    fireEvent.changeText(element, 'def2');
+    fireEvent.submitEditing(element);
+
+    await new Promise((r) => setTimeout(r, 2000));
+
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
   });
 
   it('should not dispatch an add item action on empty input', () => {
