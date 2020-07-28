@@ -38,8 +38,8 @@ interface OwnProps {
   styles?: typeof styles;
 }
 
-const mapStateToProps = (state: ITodoState) => ({
-  items: state.todoList.byId,
+const mapStateToProps = (state: ITodoState, ownProps: OwnProps) => ({
+  item: state.todoList.byId[ownProps.id],
 })
 
 const mapDispatch = {
@@ -57,16 +57,16 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = OwnProps & PropsFromRedux;
 
 const TodoItem = (props: Props) => {
-  const item = props.items[props.id];
   const style = props.styles ? props.styles : styles;
+  console.log('rendering ' + props.id);
   return (
     <ListItem
-      title={item.key}
-      titleStyle={item.done? style.itemdone : style.item}
+      title={props.item.key}
+      titleStyle={props.item.done? style.itemdone : style.item}
       onLongPress={props.drag}
       checkBox={{
         right: true,
-        checked: item.done,
+        checked: props.item.done,
         onIconPress: () => props.toggleItem(props.id),
       }}
       rightElement={<Pressable onPress={() => props.deleteItem(props.id)}>
