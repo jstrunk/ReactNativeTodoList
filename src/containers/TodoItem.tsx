@@ -58,7 +58,6 @@ type Props = OwnProps & PropsFromRedux;
 
 const TodoItem = (props: Props) => {
   const style = props.styles ? props.styles : styles;
-  console.log('rendering ' + props.id);
   return (
     <ListItem
       title={props.item.key}
