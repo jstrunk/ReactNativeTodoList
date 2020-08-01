@@ -8,23 +8,25 @@ import { ADD_ITEM,
   TOGGLE_ITEM} from '../types';
 import produce from 'immer';
 
-
 //function todoListReducer(state: ITodoList = defaultState, action: TodoActionType): ITodoList {
 const todoListReducer = produce((draft: ITodoList, action: TodoActionType) => {
+  function sortItems(a: string, b: string): number {
+    if (draft.byId[a].done && !draft.byId[b].done) return 1;
+    else if (!draft.byId[a].done && draft.byId[b].done) return -1;
+    else return 0;
+  }
+
   switch(action.type) {
     case ADD_ITEM:
       if (action.text != '' && action.id) {
         draft.byId[action.id] = {key: action.text, done: false};
         draft.allItems.push(action.id);
+        draft.allItems.sort(sortItems);
       }
       break;
     case TOGGLE_ITEM:
       draft.byId[action.id].done = !draft.byId[action.id].done;
-      draft.allItems.sort((a: string, b: string): number => {
-        if (draft.byId[a].done && !draft.byId[b].done) return 1;
-        else if (!draft.byId[a].done && draft.byId[b].done) return -1;
-        else return 0;
-      });
+      draft.allItems.sort(sortItems);
       break;
     case DELETE_ITEM:
       delete draft.byId[action.id];

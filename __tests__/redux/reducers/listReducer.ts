@@ -54,6 +54,45 @@ describe('listReducer', () => {
     });
   });
 
+
+  it('should add a new item before done items', () => {
+    expect(
+      reducer({
+        byId: {
+          abc1: {
+            key: 'Run the tests',
+            done: false,
+          },
+          def2: {
+            key: 'foo',
+            done: true,
+          },
+        },
+        allItems: ['abc1', 'def2'],
+      }, {
+        type: types.ADD_ITEM,
+        text: 'bar',
+        id: 'ghi3',
+      })
+    ).toEqual({
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: false,
+        },
+        def2: {
+          key: 'foo',
+          done: true,
+        },
+        ghi3: {
+          key: 'bar',
+          done: false,
+        }
+      },
+      allItems: ['abc1', 'ghi3', 'def2'],
+    });
+  });
+
   it('should do nothing on empty ADD_ITEM', () => {
     expect(
       reducer({
