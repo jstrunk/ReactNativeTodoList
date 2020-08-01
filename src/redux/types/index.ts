@@ -12,7 +12,7 @@ export interface ITodoState {
   todoList: ITodoList;
 }
 
-export const defaultState: ITodoList = {
+export const defaultListState: ITodoList = {
   byId: {},
   allItems: [],
 };
