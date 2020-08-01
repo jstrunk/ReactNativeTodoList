@@ -2,13 +2,9 @@ import * as types from '../../../src/redux/types';
 import reducer from '../../../src/redux/reducers/listReducer';
 
 describe('listReducer', () => {
-/*  it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual([]);
-  });
-*/
   it('should add an item to the empty state', () => {
     expect(
-      reducer(types.defaultState, {
+      reducer(types.defaultListState, {
         type: types.ADD_ITEM,
         text: 'Run the tests',
         id: 'abc1',

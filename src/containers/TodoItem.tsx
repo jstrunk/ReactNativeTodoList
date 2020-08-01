@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 
 interface OwnProps {
   id: string;
-  drag: () => void;
+  drag?: () => void;
   styles?: typeof styles;
 }
 
