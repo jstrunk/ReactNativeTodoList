@@ -5,10 +5,12 @@ import { ADD_ITEM,
   TodoActionType,
   defaultListState,
   ITodoList, 
-  TOGGLE_ITEM} from '../types';
+  TOGGLE_ITEM,
+  LOAD_LIST,
+  SET_LIST_STATUS,
+} from '../types';
 import produce from 'immer';
 
-//function todoListReducer(state: ITodoList = defaultState, action: TodoActionType): ITodoList {
 const todoListReducer = produce((draft: ITodoList, action: TodoActionType) => {
   function sortItems(a: string, b: string): number {
     if (draft.byId[a].done && !draft.byId[b].done) return 1;
@@ -38,6 +40,14 @@ const todoListReducer = produce((draft: ITodoList, action: TodoActionType) => {
       break;
     case REORDER_LIST:
       draft.allItems = action.ids;
+      break;
+    case LOAD_LIST:
+      draft.name = action.payload.name || 'Unnamed Todo List';
+      draft.allItems = action.payload.allItems;
+      draft.byId = action.payload.byId;
+      break;
+    case SET_LIST_STATUS:
+      draft.status = action.status;
       break;
   }
 }, defaultListState);

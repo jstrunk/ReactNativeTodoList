@@ -4,19 +4,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import { addItem } from '../redux/actions'
 import { ITodoState } from '../redux/types';
 import itemId from '../lib/itemId';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  addItem: {
-    padding: 15,
-    textAlign: 'left',
-    color: 'grey',
-    borderBottomColor: 'lightgrey',
-    borderBottomWidth: 1,
-  },
-});
+import styles from '../styles';
 
 const mapStateToProps = (state: ITodoState) => ({
   order: state.todoList.allItems,

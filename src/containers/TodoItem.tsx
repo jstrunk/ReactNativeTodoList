@@ -6,36 +6,16 @@
  */
 
 import React from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import { connect, ConnectedProps } from 'react-redux';
 import { toggleItem, deleteItem } from '../redux/actions';
 import { ITodoState } from '../redux/types';
 import { ListItem } from 'react-native-elements';
-
-const styles = StyleSheet.create({
-  item: {
-    textAlign: 'left',
-    color: 'black',
-  },
-  itemdone: {
-    textAlign: 'left',
-    color: 'black',
-    textDecorationLine: 'line-through',
-    textDecorationStyle: 'solid',
-  },
-  remove: {
-    textAlign: 'center',
-    color: 'red',
-  },
-  checkBox: {
-    color: '#bfbfbf',
-  },
-});
+import styles from '../styles';
 
 interface OwnProps {
   id: string;
   drag?: () => void;
-  styles?: typeof styles;
 }
 
 const mapStateToProps = (state: ITodoState, ownProps: OwnProps) => ({
@@ -57,11 +37,10 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = OwnProps & PropsFromRedux;
 
 const TodoItem = (props: Props) => {
-  const style = props.styles ? props.styles : styles;
   return (
     <ListItem
       title={props.item.key}
-      titleStyle={props.item.done? style.itemdone : style.item}
+      titleStyle={props.item.done? styles.itemdone : styles.item}
       onLongPress={props.drag}
       checkBox={{
         right: true,
@@ -69,7 +48,7 @@ const TodoItem = (props: Props) => {
         onIconPress: () => props.toggleItem(props.id),
       }}
       rightElement={<Pressable onPress={() => props.deleteItem(props.id)}>
-          <Text style={style.remove}>X</Text>
+          <Text style={styles.remove}>X</Text>
         </Pressable>
         }
     />

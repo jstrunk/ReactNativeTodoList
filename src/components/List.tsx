@@ -1,12 +1,11 @@
 import React, {Component, ReactNode} from 'react';
-import {StyleSheet} from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import TodoItem from '../containers/TodoItem';
-import { TodoActionType } from '../redux/types';
+import styles from '../styles';
 
 interface Props {
   items: Array<string>;
-  reorderList: (ids: Array<string>) => TodoActionType;
+  reorderList: (ids: Array<string>) => void;
 }
 
 interface ItemProps {
@@ -16,32 +15,9 @@ interface ItemProps {
   isActive?: boolean;
 }
 
-const styles = StyleSheet.create({
-  list: {
-    marginBottom: 40,
-  },
-  item: {
-    textAlign: 'left',
-    color: 'black',
-  },
-  itemdone: {
-    textAlign: 'left',
-    color: 'black',
-    textDecorationLine: 'line-through',
-    textDecorationStyle: 'solid',
-  },
-  remove: {
-    textAlign: 'center',
-    color: 'red',
-  },
-  checkBox: {
-    color: '#bfbfbf',
-  },
-});
-
 export default class List extends Component<Props> {
   renderItem = (itemProps: ItemProps): ReactNode => (
-    <TodoItem id={itemProps.item} styles={styles} drag={itemProps.drag} />
+    <TodoItem id={itemProps.item} drag={itemProps.drag} />
   );
 
   render(): JSX.Element {
