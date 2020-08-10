@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react-native'
 import configureMockStore, { MockStore } from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
+import { oneListOneItemDone } from '../../test/testStates';
 
 jest.mock('../../src/redux/actions');
 
@@ -19,26 +20,7 @@ describe('DeleteCompleted container', () => {
   let store: MockStore;
 
   beforeEach(() => {
-    store = mockStore({
-      todoCollection: {
-        listIds: [{id: 'list1', name: 'Test List'}],
-        activeList: 'list1',
-      },
-      todoList: {
-        name: 'Test List',
-        byId: {
-          abc1: {
-            key: 'Run the tests',
-            done: true,
-          },
-          def2: {
-            key: 'foo',
-            done: false,
-          },
-        },
-        allItems: ['abc1', 'def2'],
-      },
-    });
+    store = mockStore(oneListOneItemDone);
 
     store.dispatch = jest.fn();
   });

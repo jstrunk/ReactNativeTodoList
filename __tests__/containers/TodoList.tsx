@@ -4,6 +4,7 @@ import TodoList from '../../src/containers/TodoList';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react-native'
 import configureStore, { MockStore } from 'redux-mock-store';
+import { oneListOneItemDone } from '../../test/testStates';
 jest.mock('../../src/containers/TodoItem');
 
 const mockStore = configureStore([]);
@@ -12,21 +13,7 @@ describe('TodoList container', () => {
   let store: MockStore;
 
   beforeEach(() => {
-    store = mockStore({
-      todoList: {
-        byId: {
-          abc1: {
-            key: 'Run the tests',
-            done: true,
-          },
-          def2: {
-            key: 'foo',
-            done: false,
-          },
-        },
-        allItems: ['abc1', 'def2'],
-      },
-    });
+    store = mockStore(oneListOneItemDone);
 
     store.dispatch = jest.fn();
   });

@@ -1,34 +1,27 @@
 import 'react-native';
 import React from 'react';
 import AddItem from '../../src/containers/AddItem';
+import * as types from '../../src/redux/types';
 import * as actions from '../../src/redux/actions';
 import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react-native'
-import configureStore, { MockStore } from 'redux-mock-store';
+import configureMockStore, { MockStore } from 'redux-mock-store';
+import thunk, { ThunkDispatch } from 'redux-thunk';
+import { oneListOneItemDone } from '../../test/testStates';
 
 jest.mock('../../src/lib/itemId');
 
-const mockStore = configureStore([]);
+jest.mock('../../src/redux/actions');
+
+type DispatchExts = ThunkDispatch<types.ITodoState, void, types.CombinedActionType>;
+const middlewares = [thunk];
+const mockStore = configureMockStore<types.ITodoState,DispatchExts>(middlewares);
 
 describe('AddItem container', () => {
   let store: MockStore;
 
   beforeEach(() => {
-    store = mockStore({
-      todoList: {
-        byId: {
-          abc1: {
-            key: 'Run the tests',
-            done: true,
-          },
-          def2: {
-            key: 'foo',
-            done: false,
-          },
-        },
-        allItems: ['abc1', 'def2'],
-      },
-    });
+    store = mockStore(oneListOneItemDone);
 
     store.dispatch = jest.fn();
   });

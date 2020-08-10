@@ -21,6 +21,7 @@ exports[`AddItem container renders an AddItem 1`] = `
         "color": "grey",
         "padding": 15,
         "textAlign": "left",
+        "width": "100%",
       }
     }
     underlineColorAndroid="transparent"

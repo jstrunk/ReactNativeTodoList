@@ -1,52 +1,26 @@
-import { StyleSheet } from 'react-native';
 import React from 'react';
 import TodoItem from '../../src/containers/TodoItem';
+import * as types from '../../src/redux/types';
 import * as actions from '../../src/redux/actions';
 import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react-native'
-import configureStore, { MockStore } from 'redux-mock-store';
+import styles from '../../src/styles';
+import configureMockStore, { MockStore } from 'redux-mock-store';
+import thunk, { ThunkDispatch } from 'redux-thunk';
+import { oneListOneItemDone } from '../../test/testStates';
 
-const mockStore = configureStore([]);
+jest.mock('../../src/redux/actions');
 
-const styles = StyleSheet.create({
-  item: {
-    textAlign: 'left',
-    color: 'black',
-  },
-  itemdone: {
-    textAlign: 'left',
-    color: 'black',
-    textDecorationLine: 'line-through',
-    textDecorationStyle: 'solid',
-  },
-  remove: {
-    textAlign: 'center',
-    color: 'red',
-  },
-  checkBox: {
-    color: '#bfbfbf',
-  },
-});
+type DispatchExts = ThunkDispatch<types.ITodoState, void, types.CombinedActionType>;
+const middlewares = [thunk];
+const mockStore = configureMockStore<types.ITodoState,DispatchExts>(middlewares);
+
 
 describe('TodoItem container', () => {
   let store: MockStore;
 
   beforeEach(() => {
-    store = mockStore({
-      todoList: {
-        byId: {
-          abc1: {
-            key: 'Run the tests',
-            done: true,
-          },
-          def2: {
-            key: 'foo',
-            done: false,
-          },
-        },
-        allItems: ['abc1', 'def2'],
-      },
-    });
+    store = mockStore(oneListOneItemDone);
 
     store.dispatch = jest.fn();
   });
@@ -105,5 +79,6 @@ describe('TodoItem container', () => {
     expect(store.dispatch).toHaveBeenCalledWith(
       actions.deleteItem('abc1')
     );
+    expect(actions.deleteItem).toHaveBeenCalledWith('abc1');
   });
 });
