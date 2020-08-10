@@ -1,0 +1,9 @@
+export const addItem = jest.fn();
+export const toggleItem = jest.fn();
+export const deleteItem = jest.fn(); 
+export const deleteCompleted = jest.fn(); 
+export const reorderList = jest.fn(); 
+export const registerList = jest.fn(); 
+export const setActiveList = jest.fn(); 
+export const createList = jest.fn(); 
+export const loadList = jest.fn(); 
