@@ -338,5 +338,122 @@ describe('listReducer', () => {
     });
   });
 
+  it('should load the list', () => {
+    expect(
+      reducer({
+        byId: {},
+        allItems: [],
+      }, {
+        type: types.LOAD_LIST,
+        payload: {
+          name: 'foo',
+          byId: {
+            abc1: {
+              key: 'Run the tests',
+              done: false,
+            },
+            def2: {
+              key: 'foo',
+              done: false,
+            },
+          },
+          allItems: ['def2', 'abc1'], 
+        }
+      })
+    ).toEqual({
+      name: 'foo',
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: false,
+        },
+        def2: {
+          key: 'foo',
+          done: false,
+        },
+      },
+      allItems: ['def2', 'abc1'], 
+    });
+  });
 
+  it('should load the list with no name', () => {
+    expect(
+      reducer({
+        byId: {},
+        allItems: [],
+      }, {
+        type: types.LOAD_LIST,
+        payload: {
+          byId: {
+            abc1: {
+              key: 'Run the tests',
+              done: false,
+            },
+            def2: {
+              key: 'foo',
+              done: false,
+            },
+          },
+          allItems: ['def2', 'abc1'], 
+        }
+      })
+    ).toEqual({
+      name: 'Unnamed Todo List',
+      byId: {
+        abc1: {
+          key: 'Run the tests',
+          done: false,
+        },
+        def2: {
+          key: 'foo',
+          done: false,
+        },
+      },
+      allItems: ['def2', 'abc1'], 
+    });
+  });
+
+  it('should set the list status', () => {
+    expect(
+      reducer({
+        byId: {},
+        allItems: [],
+      }, {
+        type: types.SET_LIST_STATUS,
+        status: 'loaded'
+      })
+    ).toEqual({
+      byId: {},
+      allItems: [],
+      status: 'loaded',
+    });
+
+    expect(
+      reducer({
+        byId: {},
+        allItems: [],
+      }, {
+        type: types.SET_LIST_STATUS,
+        status: 'error'
+      })
+    ).toEqual({
+      byId: {},
+      allItems: [],
+      status: 'error',
+    });
+
+    expect(
+      reducer({
+        byId: {},
+        allItems: [],
+      }, {
+        type: types.SET_LIST_STATUS,
+        status: 'fetching'
+      })
+    ).toEqual({
+      byId: {},
+      allItems: [],
+      status: 'fetching',
+    });
+  });
 });
