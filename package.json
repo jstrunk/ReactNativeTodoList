@@ -71,7 +71,8 @@
     "preset": "@testing-library/react-native",
     "collectCoverage": true,
     "coverageReporters": [
-      "text"
+      "text",
+      "lcov"
     ],
     "setupFiles": [
       "./jestSetupFile.js",

@@ -98,3 +98,5 @@ interface RegisterListAction {
 }
 
 export type CollectionActionType = RegisterListAction | SetActiveListAction;
+
+export type CombinedActionType = TodoActionType | CollectionActionType;

@@ -11,9 +11,9 @@ import { ADD_ITEM,
   SET_ACTIVE_LIST,
   ITodoState,
   SET_LIST_STATUS,
+  CombinedActionType,
 } from '../types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { AnyAction } from 'redux';
 import listCache from '../store/listCache';
 import { showMessage } from 'react-native-flash-message';
 
@@ -21,8 +21,8 @@ function _addItem(text: string, id: string): TodoActionType {
   return { type: ADD_ITEM, text, id };
 }
 
-export const addItem = (text: string, id: string): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>, getState: () => ITodoState): Promise<void> => {
+export const addItem = (text: string, id: string): ThunkAction<Promise<void>, ITodoState, void, TodoActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, TodoActionType>, getState: () => ITodoState): Promise<void> => {
     dispatch(_addItem(text, id));
     const state = getState();
     if (state.todoCollection.activeList) {
@@ -35,8 +35,8 @@ function _toggleItem(id: string): TodoActionType {
   return { type: TOGGLE_ITEM, id };
 }
 
-export const toggleItem = (id: string): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>, getState: () => ITodoState): Promise<void> => {
+export const toggleItem = (id: string): ThunkAction<Promise<void>, ITodoState, void, TodoActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, TodoActionType>, getState: () => ITodoState): Promise<void> => {
     dispatch(_toggleItem(id));
     const state = getState();
     if (state.todoCollection.activeList) {
@@ -49,8 +49,8 @@ function _deleteItem(id: string): TodoActionType {
   return { type: DELETE_ITEM, id };
 }
 
-export const deleteItem = (id: string): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>, getState: () => ITodoState): Promise<void> => {
+export const deleteItem = (id: string): ThunkAction<Promise<void>, ITodoState, void, TodoActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, TodoActionType>, getState: () => ITodoState): Promise<void> => {
     dispatch(_deleteItem(id));
     const state = getState();
     if (state.todoCollection.activeList) {
@@ -63,8 +63,8 @@ function _deleteCompleted(ids: Array<string>): TodoActionType {
   return { type: DELETE_COMPLETED, ids };
 }
 
-export const deleteCompleted = (ids: Array<string>): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>, getState: () => ITodoState): Promise<void> => {
+export const deleteCompleted = (ids: Array<string>): ThunkAction<Promise<void>, ITodoState, void, TodoActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, TodoActionType>, getState: () => ITodoState): Promise<void> => {
     dispatch(_deleteCompleted(ids));
     const state = getState();
     if (state.todoCollection.activeList) {
@@ -77,8 +77,8 @@ function _reorderList(ids: Array<string>): TodoActionType {
   return { type: REORDER_LIST, ids };
 }
 
-export const reorderList = (ids: Array<string>): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>, getState: () => ITodoState): Promise<void> => {
+export const reorderList = (ids: Array<string>): ThunkAction<Promise<void>, ITodoState, void, TodoActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, TodoActionType>, getState: () => ITodoState): Promise<void> => {
     dispatch(_reorderList(ids));
     const state = getState();
     if (state.todoCollection.activeList) {
@@ -103,8 +103,8 @@ export function setActiveList(id: string): CollectionActionType {
   return { type: SET_ACTIVE_LIST, id };
 }
 
-export const createList = (id: string, name: string): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>): Promise<void> => {
+export const createList = (id: string, name: string): ThunkAction<Promise<void>, ITodoState, void, CollectionActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, CollectionActionType>): Promise<void> => {
     dispatch(registerList(id, name));
 
     await listCache.set(id, JSON.stringify({name: name, byId: {}, allItems: []}));
@@ -113,8 +113,8 @@ export const createList = (id: string, name: string): ThunkAction<Promise<void>,
   }
 }
 
-export const loadList = (id: string): ThunkAction<Promise<void>, any, any, AnyAction> => {
-  return async (dispatch: ThunkDispatch<any, any, AnyAction>): Promise<void> => {
+export const loadList = (id: string): ThunkAction<Promise<void>, ITodoState, void, CombinedActionType> => {
+  return async (dispatch: ThunkDispatch<ITodoState, void, CombinedActionType>): Promise<void> => {
     dispatch(setListStatus('fetching'));
     const result: string | void | undefined = await listCache.get(id)
       .catch((err) => {
