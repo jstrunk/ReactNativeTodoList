@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateListModal container renders an CreateListModal 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+      "marginTop": 22,
+    }
+  }
+>
+  <Modal
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={true}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "justifyContent": "center",
+          "marginTop": 22,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "lightgrey",
+            "borderRadius": 20,
+            "elevation": 5,
+            "margin": 20,
+            "padding": 35,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+            "width": "75%",
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Create new list"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "borderBottomWidth": 1,
+              "padding": 15,
+              "textAlign": "left",
+              "width": "100%",
+            }
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+  </Modal>
+</View>
+`;
