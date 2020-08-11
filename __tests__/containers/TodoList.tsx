@@ -19,12 +19,12 @@ describe('TodoList container', () => {
   });
 
   it('renders a TodoList', () => {
-    const { asJSON } = render(
+    const { toJSON } = render(
       <Provider store={store}>
         <TodoList />
       </Provider>
     );
-    expect(asJSON()).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('has items', () => {

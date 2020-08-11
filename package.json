@@ -40,7 +40,7 @@
   "devDependencies": {
     "@react-native-community/cli": "^4.10.0",
     "@testing-library/jest-native": "^3.1.0",
-    "@testing-library/react-native": "github:daveols/native-testing-library#support-react-native-63-dist",
+    "@testing-library/react-native": "^7.0.1",
     "@types/jest": "^26.0.5",
     "@types/react": "^16.9.43",
     "@types/react-native": "^0.63.1",
@@ -67,7 +67,7 @@
     "typescript": "^3.9.7"
   },
   "jest": {
-    "preset": "@testing-library/react-native",
+    "preset": "react-native",
     "collectCoverage": true,
     "coverageReporters": [
       "text",

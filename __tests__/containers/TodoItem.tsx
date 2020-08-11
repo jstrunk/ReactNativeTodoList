@@ -26,12 +26,12 @@ describe('TodoItem container', () => {
   });
 
   it('renders a TodoItem', () => {
-    const { asJSON } = render(
+    const { toJSON } = render(
       <Provider store={store}>
         <TodoItem id='abc1' styles={styles} />
       </Provider>
     );
-    expect(asJSON()).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('has items', () => {

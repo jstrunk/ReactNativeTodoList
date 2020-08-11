@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import List from '../../src/components/List';
-import { render, fireEvent, NativeTestEvent } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 jest.mock('../../src/containers/TodoItem');
 
 describe('List component', () => {
@@ -9,9 +9,9 @@ describe('List component', () => {
   const reorderList = jest.fn();
 
   test('renders correctly', () => {
-    const { asJSON } = render(
+    const { toJSON } = render(
       <List items={items} reorderList={reorderList} />);
-    expect(asJSON()).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('has items', () => {
@@ -29,9 +29,8 @@ describe('List component', () => {
     );
 
     const fooElements = getAllByText('def2');
-    fireEvent(fooElements[0],
-      new NativeTestEvent('dragEnd', { nativeEvent: { value: ['def2', 'abc1']}}),
-    );
+    fireEvent(fooElements[0], 'dragEnd', ['def2', 'abc1']);
+
     expect(fooElements).toHaveLength(1);
     expect(reorderList).toHaveBeenCalledTimes(1);
   });

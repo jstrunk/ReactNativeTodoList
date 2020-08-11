@@ -27,12 +27,12 @@ describe('AddItem container', () => {
   });
 
   it('renders an AddItem', () => {
-    const { asJSON } = render(
+    const { toJSON } = render(
       <Provider store={store}>
         <AddItem />
       </Provider>
     );
-    expect(asJSON()).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should dispatch an add item action', async () => {
@@ -45,7 +45,7 @@ describe('AddItem container', () => {
     const element = getByPlaceholderText('Add new item');
 
     fireEvent.changeText(element, 'Hello World!');
-    fireEvent.submitEditing(element);
+    fireEvent(element, 'submitEditing');
 
     await new Promise((r) => setTimeout(r, 2000));
 
@@ -65,11 +65,14 @@ describe('AddItem container', () => {
     const element = getByPlaceholderText('Add new item');
 
     fireEvent.changeText(element, 'def2');
-    fireEvent.submitEditing(element);
+    fireEvent(element, 'submitEditing');
 
     await new Promise((r) => setTimeout(r, 2000));
 
     expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      actions.addItem('def2', 'def21')
+    );
   });
 
   it('should not dispatch an add item action on empty input', () => {
@@ -82,7 +85,7 @@ describe('AddItem container', () => {
     const element = getByPlaceholderText('Add new item');
 
     fireEvent.changeText(element, '');
-    fireEvent.submitEditing(element);
+    fireEvent(element, 'submitEditing');
 
     expect(store.dispatch).toHaveBeenCalledTimes(0);
   });
