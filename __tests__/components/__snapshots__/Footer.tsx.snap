@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "white",
+      "bottom": 0,
+      "left": 0,
+      "padding": 15,
+      "position": "absolute",
+      "right": 0,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+      }
+    }
+  >
+    Delete Completed
+  </Text>
+</View>
+`;
